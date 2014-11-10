@@ -1,0 +1,16 @@
+language: java
+jdk:
+- oraclejdk8
+before_install: git clone -b travis `git config --get remote.origin.url` target/travis
+install: '[ ${TRAVIS_PULL_REQUEST} = ''false'' ] && mvn clean deploy -P sonatype-oss-release
+  -Dgpg.skip=true --settings target/travis/settings.xml || mvn clean verify --settings
+  target/travis/settings.xml'
+after_success:
+- mvn clean jacoco:prepare-agent test jacoco:report coveralls:jacoco
+branches:
+  only:
+  - master
+env:
+  global:
+  - secure: EaLAS6dGJGKSHXPtgYhsyvHK5C/sQ4qhrFwWtqndeh+8MbNIASO3eOWUn7ZK4VR/HXqArXD4ZCQA8FBi6AgwUzxe9wKpicU7j96mBUr+UH6pjIqeXU5ry8r8Nqgr/qlSTIqAgT0oy9hwY60P9r+SaS+d4I1Vp4Aln9SIVrd26HE=
+  - secure: Sw5OCUB2MzXeAcje6MoR7gx88Tmuty7Xtl3KVhEgBMIWkEg8MXqrh0LnifsVDH3cBbofABa0l0oNDiRjbLZ8c5rWnrFWOxH36fPdeuZb1KtsfLGuOLKTg16T2eFZ6JMG8Dbku/TGmPKZys4IiV0yQPT9x0qS73Bmw8Uo18gWF2Y=
