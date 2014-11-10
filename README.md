@@ -1,4 +1,5 @@
 # darcy-salesforce
+[![Build Status](https://travis-ci.org/darcy-framework/darcy-salesforce.svg?branch=master)](https://travis-ci.org/darcy-framework/darcy-salesforce)
 
 Library of Salesforce element implementations.
 
