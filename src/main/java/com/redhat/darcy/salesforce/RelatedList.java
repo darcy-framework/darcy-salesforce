@@ -23,13 +23,16 @@ import static com.redhat.darcy.ui.Elements.element;
 import static com.redhat.darcy.ui.Elements.text;
 
 import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Table;
 import com.redhat.darcy.ui.api.elements.Text;
 import com.redhat.darcy.web.By;
+import com.redhat.darcy.web.api.Browser;
 
-public abstract class RelatedList<T extends RelatedList<T>> extends AbstractViewElement implements Table<T> {
+public abstract class RelatedList<T extends RelatedList<T>> extends AbstractViewElement implements
+        Table<T> {
     public static Locator byTitle(String title) {
         return By.xpath("//div[" +
                 "contains(concat(' ', normalize-space(@class), ' '),' bRelatedList ')]" +
@@ -45,10 +48,33 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
         return By.xpath(xpath);
     }
 
+    public static class ActionColumn<U extends RelatedList<U>> implements Column<U, ActionCell> {
+        @Override
+        public ActionCell getCell(U table, int rowIndex) {
+            return new ActionCell(table.byRowColumn(rowIndex, 1, "td"), table.getContext());
+        }
+    }
+
+    public static class CheckableActionColumn<U extends RelatedList<U>> implements
+            ColumnWithHeader<U, CheckableActionCell, CheckableActionHeader> {
+        @Override
+        public CheckableActionCell getCell(U table, int rowIndex) {
+            return new CheckableActionCell(table.byRowColumn(rowIndex, 1, "td"),
+                    table.getContext());
+        }
+
+        @Override
+        public CheckableActionHeader getHeader(U table) {
+            return new CheckableActionHeader(table.byHeader(1), table.getContext());
+        }
+    }
+
     private Text noRows = text(byInner(By.className("noRowsHeader")));
     private Element loadingSpinner = element(byInner(By.className("loading")));
-
     private Element innerTable = element(byInner(By.xpath(".//div[@class='pbBody']/table")));
+
+    @Require
+    private Element parent = super.parent;
 
     public RelatedList(Locator parent) {
         super(parent);
@@ -61,6 +87,10 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
     @Override
     public boolean isLoaded() {
         return !loadingSpinner.isDisplayed();
+    }
+
+    public Browser getContext() {
+        return (Browser) super.getContext();
     }
 
     @Override
@@ -78,6 +108,11 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
     }
 
     protected Locator byRowColumn(int rowIndex, int colIndex, String tagName) {
-        return By.nested(innerTable, By.xpath("./tbody/tr[" + rowIndex + 1 + "]/" + tagName + "[" + colIndex + "]"));
+        String xpath = String.format("./tbody/tr[%d]/%s[%d]", rowIndex + 1, tagName, colIndex + 1);
+        return By.nested(innerTable, By.xpath(xpath));
+    }
+
+    protected Locator byHeader(int colIndex) {
+        return byRowColumn(-1, colIndex, "th");
     }
 }
