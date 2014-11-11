@@ -32,7 +32,7 @@ import java.time.temporal.ChronoUnit;
 
 public abstract class DefaultActions {
     public static <T extends View> ActionLink<T> edit(T editView) {
-        return (e, b) -> after(b.find().link(byActionText("edit", e))::click)
+        return (e, b) -> after(b.find().link(byActionText("Edit", e))::click)
                 .expect(b.transition().to(editView))
                 .waitUpTo(2, ChronoUnit.MINUTES);
     }
