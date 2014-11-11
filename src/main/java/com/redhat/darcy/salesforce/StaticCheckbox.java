@@ -27,15 +27,15 @@ import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Checkbox;
 import com.redhat.darcy.web.api.elements.HtmlElement;
 
-public class SalesforceCheckbox extends AbstractView implements Checkbox {
+public class StaticCheckbox extends AbstractView implements Checkbox {
     @Require
     private HtmlElement backingImage;
 
-    public static SalesforceCheckbox salesforceCheckbox(Locator locator) {
-        return new SalesforceCheckbox(locator);
+    public static StaticCheckbox salesforceCheckbox(Locator locator) {
+        return new StaticCheckbox(locator);
     }
 
-    public SalesforceCheckbox(Locator parent) {
+    public StaticCheckbox(Locator parent) {
         backingImage = htmlElement(parent);
     }
 
