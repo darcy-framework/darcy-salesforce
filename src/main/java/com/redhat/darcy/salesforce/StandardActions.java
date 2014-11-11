@@ -29,8 +29,9 @@ import com.redhat.darcy.ui.api.View;
 import com.redhat.darcy.ui.api.elements.Element;
 
 import java.time.temporal.ChronoUnit;
+import java.util.function.Supplier;
 
-public abstract class DefaultActions {
+public abstract class StandardActions {
     public static <T extends View> ActionLink<T> edit(T editView) {
         return (e, b) -> after(b.find().link(byActionText("Edit", e))::click)
                 .expect(b.transition().to(editView))
