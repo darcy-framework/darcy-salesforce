@@ -32,20 +32,20 @@ import java.time.temporal.ChronoUnit;
 import java.util.function.Supplier;
 
 public abstract class StandardActions {
-    public static <T extends View> ActionLink<T> edit(T editView) {
+    public static <T extends View> ActionLink<T> edit(Supplier<T> editView) {
         return (e, b) -> after(b.find().link(byActionText("Edit", e))::click)
-                .expect(b.transition().to(editView))
+                .expect(b.transition().to(editView.get()))
                 .waitUpTo(2, ChronoUnit.MINUTES);
     }
 
-    public static <T extends View> ActionLink<T> delete(T reloadView) {
+    public static <T extends View> ActionLink<T> delete(Supplier<T> reloadView) {
         return (e, b) -> {
             after(b.find().link(By.nested(e, By.linkText("Del")))::click)
                     .expect(b.find().alert(), present())
                     .waitUpTo(10, ChronoUnit.SECONDS)
                     .accept();
 
-            return expect(b.transition().to(reloadView))
+            return expect(b.transition().to(reloadView.get()))
                     .waitUpTo(1, ChronoUnit.MINUTES);
         };
     }
