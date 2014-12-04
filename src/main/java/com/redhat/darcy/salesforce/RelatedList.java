@@ -86,7 +86,7 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
 
     @Override
     public boolean isLoaded() {
-        return !loadingSpinner.isDisplayed();
+    	return super.isLoaded() && !loadingSpinner.isDisplayed();
     }
 
     public Browser getContext() {
