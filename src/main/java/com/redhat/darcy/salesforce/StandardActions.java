@@ -50,6 +50,18 @@ public abstract class StandardActions {
         };
     }
 
+    public static <T extends View> ActionLink<T> reassign(Supplier<T> reassignView) {
+        return (e, b) -> after(b.find().link(byActionText("Reassign", e))::click)
+                .expect(b.transition().to(reassignView.get()))
+                .waitUpTo(2, ChronoUnit.MINUTES);
+    }
+
+    public static <T extends View> ActionLink<T> approveReject(Supplier<T> approveRejectView) {
+  	    return (e, b) -> after(b.find().link(byActionText("Approve / Reject", e))::click)
+                .expect(b.transition().to(approveRejectView.get()))
+                .waitUpTo(2, ChronoUnit.MINUTES);
+    }
+
     private static Locator byActionText(String named, Element actionCell) {
         return By.nested(actionCell, By.linkText(named));
     }
