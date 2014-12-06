@@ -77,4 +77,9 @@ public class StaticCheckbox extends AbstractView implements Checkbox {
     public boolean isPresent() {
         return backingImage.isPresent();
     }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
