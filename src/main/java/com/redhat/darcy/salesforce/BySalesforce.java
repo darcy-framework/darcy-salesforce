@@ -22,6 +22,7 @@ package com.redhat.darcy.salesforce;
 import com.redhat.darcy.ui.By;
 import com.redhat.darcy.ui.api.Context;
 import com.redhat.darcy.ui.api.Locator;
+import com.redhat.darcy.ui.api.elements.Findable;
 
 import java.util.List;
 import java.util.Objects;
@@ -49,12 +50,13 @@ public abstract class BySalesforce {
         }
 
         @Override
-        public <T> List<T> findAll(Class<T> type, Context context) {
+        public <T extends Findable> List<T> findAll(Class<T> type,
+                Context context) {
             return locator.findAll(type, context);
         }
 
         @Override
-        public <T> T find(Class<T> type, Context context) {
+        public <T extends Findable> T find(Class<T> type, Context context) {
             return locator.find(type, context);
         }
 
