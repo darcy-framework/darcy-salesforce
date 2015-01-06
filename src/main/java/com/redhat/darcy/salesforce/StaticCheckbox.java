@@ -80,6 +80,6 @@ public class StaticCheckbox extends AbstractView implements Checkbox {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return false;
     }
 }
