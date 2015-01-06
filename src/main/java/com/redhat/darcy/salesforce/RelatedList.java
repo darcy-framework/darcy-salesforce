@@ -20,12 +20,19 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.ui.Elements.element;
+import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.ui.Elements.text;
+import static com.redhat.synq.Synq.after;
+
+import java.time.temporal.ChronoUnit;
+
+import org.hamcrest.Matchers;
 
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
+import com.redhat.darcy.ui.api.elements.Link;
 import com.redhat.darcy.ui.api.elements.Table;
 import com.redhat.darcy.ui.api.elements.Text;
 import com.redhat.darcy.web.By;
@@ -72,6 +79,7 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
     private Text noRows = text(byInner(By.className("noRowsHeader")));
     private Element loadingSpinner = element(byInner(By.className("loading")));
     private Element innerTable = element(byInner(By.xpath(".//div[@class='pbBody']/table")));
+    private Link showMore = link(byInner(By.xpath(".//div[@class='pShowMore']/a")));
 
     @Require
     private Element parent = super.parent;
@@ -105,6 +113,20 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
     @Override
     public boolean isEmpty() {
         return noRows.isDisplayed();
+    }
+
+    public boolean canShowMore() {
+        return showMore.isDisplayed();
+    }
+
+    public void clickShowMoreLink() {
+         after(showMore::click)
+            .expectCallTo(this::getRowCount, Matchers.greaterThan(getRowCount()))
+            .waitUpTo(2, ChronoUnit.MINUTES);
+    }
+    
+    public Locator byButtonTitle(String buttonTitle) {
+        return byInner(By.xpath(".//input[@title='" + buttonTitle + "']"));
     }
 
     protected Locator byRowColumn(int rowIndex, int colIndex, String tagName) {
