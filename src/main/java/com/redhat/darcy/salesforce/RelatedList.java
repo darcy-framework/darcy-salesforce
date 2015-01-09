@@ -130,7 +130,7 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
     }
 
     protected Locator byRowColumn(int rowIndex, int colIndex, String tagName) {
-        String xpath = String.format("./tbody/tr[%d]/%s[%d]", rowIndex + 1, tagName, colIndex + 1);
+        String xpath = String.format("./tbody/tr[%d]/%s[%d]", rowIndex + 1, tagName, colIndex);
         return By.nested(innerTable, By.xpath(xpath));
     }
 
