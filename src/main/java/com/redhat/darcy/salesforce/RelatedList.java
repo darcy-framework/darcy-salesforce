@@ -119,7 +119,7 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
         return showMore.isDisplayed();
     }
 
-    public void clickShowMoreLink() {
+    public void showMore() {
          after(showMore::click)
             .expectCallTo(this::getRowCount, Matchers.greaterThan(getRowCount()))
             .waitUpTo(2, ChronoUnit.MINUTES);
