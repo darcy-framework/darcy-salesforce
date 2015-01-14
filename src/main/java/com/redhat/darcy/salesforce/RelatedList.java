@@ -24,10 +24,6 @@ import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.ui.Elements.text;
 import static com.redhat.synq.Synq.after;
 
-import java.time.temporal.ChronoUnit;
-
-import org.hamcrest.Matchers;
-
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
@@ -37,6 +33,10 @@ import com.redhat.darcy.ui.api.elements.Table;
 import com.redhat.darcy.ui.api.elements.Text;
 import com.redhat.darcy.web.By;
 import com.redhat.darcy.web.api.Browser;
+
+import org.hamcrest.Matchers;
+
+import java.time.temporal.ChronoUnit;
 
 public abstract class RelatedList<T extends RelatedList<T>> extends AbstractViewElement implements
         Table<T> {
