@@ -125,7 +125,7 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
             .waitUpTo(2, ChronoUnit.MINUTES);
     }
     
-    public Locator byButtonTitle(String buttonTitle) {
+    protected Locator byButtonTitle(String buttonTitle) {
         return byInner(By.xpath(".//input[@title='" + buttonTitle + "']"));
     }
 
