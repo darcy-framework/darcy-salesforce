@@ -37,7 +37,7 @@ import java.util.Objects;
  */
 
 public abstract class BySalesforce {
-    public static BySalesforceStdLabel stdlabel(String subHeading, String label) {
+    public static BySalesforceStdLabel stdLabel(String subHeading, String label) {
         return new BySalesforceStdLabel(subHeading, label);
     }
     
