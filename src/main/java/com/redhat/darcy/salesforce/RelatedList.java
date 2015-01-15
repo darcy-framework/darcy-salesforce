@@ -20,16 +20,23 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.ui.Elements.element;
+import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.ui.Elements.text;
+import static com.redhat.synq.Synq.after;
 
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
+import com.redhat.darcy.ui.api.elements.Link;
 import com.redhat.darcy.ui.api.elements.Table;
 import com.redhat.darcy.ui.api.elements.Text;
 import com.redhat.darcy.web.By;
 import com.redhat.darcy.web.api.Browser;
+
+import org.hamcrest.Matchers;
+
+import java.time.temporal.ChronoUnit;
 
 public abstract class RelatedList<T extends RelatedList<T>> extends AbstractViewElement implements
         Table<T> {
@@ -72,6 +79,7 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
     private Text noRows = text(byInner(By.className("noRowsHeader")));
     private Element loadingSpinner = element(byInner(By.className("loading")));
     private Element innerTable = element(byInner(By.xpath(".//div[@class='pbBody']/table")));
+    private Link showMore = link(byInner(By.xpath(".//div[@class='pShowMore']/a")));
 
     @Require
     private Element parent = super.parent;
@@ -107,8 +115,22 @@ public abstract class RelatedList<T extends RelatedList<T>> extends AbstractView
         return noRows.isDisplayed();
     }
 
+    public boolean canShowMore() {
+        return showMore.isDisplayed();
+    }
+
+    public void showMore() {
+         after(showMore::click)
+            .expectCallTo(this::getRowCount, Matchers.greaterThan(getRowCount()))
+            .waitUpTo(2, ChronoUnit.MINUTES);
+    }
+    
+    protected Locator byButtonTitle(String buttonTitle) {
+        return byInner(By.xpath(".//input[@title='" + buttonTitle + "']"));
+    }
+
     protected Locator byRowColumn(int rowIndex, int colIndex, String tagName) {
-        String xpath = String.format("./tbody/tr[%d]/%s[%d]", rowIndex + 1, tagName, colIndex + 1);
+        String xpath = String.format("./tbody/tr[%d]/%s[%d]", rowIndex + 1, tagName, colIndex);
         return By.nested(innerTable, By.xpath(xpath));
     }
 
