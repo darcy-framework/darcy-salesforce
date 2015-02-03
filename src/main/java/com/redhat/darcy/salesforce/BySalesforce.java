@@ -61,7 +61,7 @@ public abstract class BySalesforce {
             this.label = Objects.requireNonNull(label, "label");
 
             String xpath = "//div[@class='pbSubsection']//td[" + withClass("dataCol") + 
-                    " and " + "preceding-sibling::td[1][" + withClass("labelCol") + 
+                    " and " + "preceding-sibling::*[1][" + withClass("labelCol") + 
                     "]//text()='" + label + "']";
 
             locator = By.xpath(xpath);
