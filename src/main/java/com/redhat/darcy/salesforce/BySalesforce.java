@@ -19,10 +19,10 @@
 
 package com.redhat.darcy.salesforce;
 
-import com.redhat.darcy.web.By;
 import com.redhat.darcy.ui.api.Context;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Findable;
+import com.redhat.darcy.web.By;
 
 import java.util.List;
 import java.util.Objects;
