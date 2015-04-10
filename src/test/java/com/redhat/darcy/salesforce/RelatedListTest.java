@@ -22,7 +22,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by jvervaec on 2/5/15.
  */
 public class RelatedListTest {
     private TestContext mockContext = mock(TestContext.class);
