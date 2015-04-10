@@ -19,15 +19,15 @@
 
 package com.redhat.darcy.salesforce;
 
-import static com.redhat.darcy.ui.By.chained;
-import static com.redhat.darcy.web.By.htmlTag;
-import static com.redhat.darcy.web.HtmlElements.htmlElement;
-
-import com.redhat.darcy.ui.AbstractView;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Checkbox;
+import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.web.api.elements.HtmlElement;
+
+import static com.redhat.darcy.web.By.htmlTag;
+import static com.redhat.darcy.web.HtmlElements.htmlElement;
 
 /**
  * A ViewElement which corresponds to the checkbox 'image' on 
@@ -35,10 +35,12 @@ import com.redhat.darcy.web.api.elements.HtmlElement;
  * and finds the image tag nested below.  Maps the image attributes 
  * to standard checkbox methods.
  */
-public class StaticCheckbox extends AbstractView implements Checkbox {
+@RequireAll
+public class StaticCheckbox extends AbstractViewElement implements Checkbox {
     
-    @Require
-    private HtmlElement backingImage;
+    private Element parent = super.parent;
+    
+    private HtmlElement backingImage = htmlElement(byInner(htmlTag("img")));
 
     /**
      * A ViewElement which corresponds to the checkbox 'image' on 
@@ -54,7 +56,7 @@ public class StaticCheckbox extends AbstractView implements Checkbox {
     }
 
     public StaticCheckbox(Locator parent) {
-        backingImage = htmlElement(chained(parent, htmlTag("img")));
+        super(parent);
     }
 
     @Override
