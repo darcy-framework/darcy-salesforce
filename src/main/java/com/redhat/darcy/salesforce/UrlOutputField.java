@@ -34,7 +34,7 @@ import static com.redhat.darcy.web.By.htmlTag;
  */
 
 @RequireAll
-public class URLOutputField extends AbstractViewElement implements Link {
+public class UrlOutputField extends AbstractViewElement implements Link {
 
 
     private Element parent = super.parent;
@@ -49,11 +49,11 @@ public class URLOutputField extends AbstractViewElement implements Link {
      * @param locator  Locator returned from BySalesforce
      * @return URLOutputField
      */
-    public static URLOutputField urlOutputField(Locator locator) {
-        return new URLOutputField(locator);
+    public static UrlOutputField urlOutputField(Locator locator) {
+        return new UrlOutputField(locator);
     }
     
-    public URLOutputField(Locator parent) {
+    public UrlOutputField(Locator parent) {
         super(parent);
     }
     
