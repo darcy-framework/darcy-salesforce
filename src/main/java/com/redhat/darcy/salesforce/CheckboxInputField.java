@@ -79,7 +79,7 @@ public class CheckboxInputField extends AbstractViewElement implements Checkbox,
 
     @Override
     public void toggle() {
-        click();
+        nestedCheckbox.toggle();
     }
 
     @Override
