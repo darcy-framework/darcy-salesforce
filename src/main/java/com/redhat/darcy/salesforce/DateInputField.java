@@ -133,20 +133,20 @@ public class DateInputField extends AbstractViewElement implements TextInput,
         return requiredInput.isDisplayed();
     }  
     
-    /** Click the [today] link nest to the date imput field. */
+    /** Click the [today] link next to the date input field. */
     public void today() {
         nestedLink.click();
     }
 
     @Override
     public String getText() {
-        nestedLink.getText();
-        return null;
+        return nestedLink.getText();
+        
     }
 
     @Override
     public String getLinkText() {
-        nestedLink.getLinkText();
-        return null;
+        return nestedLink.getLinkText();
+        
     }
 }
