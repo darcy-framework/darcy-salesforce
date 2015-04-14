@@ -34,7 +34,6 @@ import com.redhat.darcy.ui.api.elements.Link;
 import com.redhat.darcy.ui.api.elements.Requireable;
 import com.redhat.darcy.ui.api.elements.TextInput;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
