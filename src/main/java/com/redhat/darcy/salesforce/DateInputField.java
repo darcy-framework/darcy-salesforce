@@ -34,7 +34,9 @@ import com.redhat.darcy.ui.api.elements.Link;
 import com.redhat.darcy.ui.api.elements.Requireable;
 import com.redhat.darcy.ui.api.elements.TextInput;
 
+import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * An ViewElement for a value that corresponds to a Date field on 
@@ -43,20 +45,21 @@ import java.time.LocalDate;
 public class DateInputField extends AbstractViewElement implements TextInput, 
     DateInput, Link, Requireable {
 
+    private DateTimeFormatter formatter;
+    
     @Require
     private Element parent = super.parent;
-    
+
     @Require
     private TextInput nestedTextInput = textInput(byInner( 
             xpath("//span[contains(@class,'dateInput')]"),
             htmlTag("input")));
-    
+
     @Require
     private Link nestedLink = link(byInner(
             xpath("//span[contains(@class,'dateInput')]"),
             htmlTag("span"), htmlTag("a")));
-    
-    
+
     private RequiredInput requiredInput;
     
     /**
@@ -67,12 +70,14 @@ public class DateInputField extends AbstractViewElement implements TextInput,
      * @param locator  Locator returned from BySalesforce
      * @return DateInputField
      */
-    public static DateInputField dateInputField(Locator locator) {
-        return new DateInputField(locator);
+    public static DateInputField dateInputField(Locator locator, 
+            DateTimeFormatter formatter) {
+        return new DateInputField(locator, formatter);
     }
 
-    public DateInputField(Locator parent) {
+    public DateInputField(Locator parent, DateTimeFormatter formatter) {
         super(parent);
+        this.formatter = formatter;
         requiredInput = requiredInput(parent);
 
     }
@@ -91,8 +96,8 @@ public class DateInputField extends AbstractViewElement implements TextInput,
     public void clear() {
         nestedTextInput.clear();
     }
-    
-    /** Click the date input field.  @see today() for the [today] link. */
+
+    /** Click the date input field.  @see todayLink() for the [today] link. */
     @Override
     public void click() {
         nestedTextInput.click();
@@ -120,33 +125,33 @@ public class DateInputField extends AbstractViewElement implements TextInput,
 
     @Override
     public void setDate(LocalDate date) {
-        nestedTextInput.clearAndType(date.toString());
+        nestedTextInput.clearAndType(date.format(formatter));
     }
 
     @Override
     public LocalDate getDate() {
-        return LocalDate.parse(nestedTextInput.getValue());
+        return LocalDate.parse(nestedTextInput.getValue(), formatter);
     }
 
     @Override
     public boolean isRequired() {
         return requiredInput.isDisplayed();
     }  
-    
+
     /** Click the [today] link next to the date input field. */
-    public void today() {
+    public void todayLink() {
         nestedLink.click();
     }
 
     @Override
     public String getText() {
         return nestedLink.getText();
-        
+
     }
 
     @Override
     public String getLinkText() {
         return nestedLink.getLinkText();
-        
+
     }
 }
