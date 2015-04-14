@@ -60,6 +60,10 @@ public class InputText extends AbstractViewElement implements TextInput,
     public InputText(Locator parent) {
         super(parent);
     }
+    
+    public InputText(Element parent) {
+        super(parent);
+    }
 
     @Override
     public void clearAndType(CharSequence... keysToType) {

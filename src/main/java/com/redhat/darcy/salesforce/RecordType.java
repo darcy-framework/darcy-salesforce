@@ -56,6 +56,10 @@ public class RecordType extends AbstractViewElement {
     public RecordType(Locator parent) {
         super(parent);
     }
+    
+    public RecordType(Element parent) {
+        super(parent);
+    }
 
     public String getRecordType() {
         return recordType.getText();

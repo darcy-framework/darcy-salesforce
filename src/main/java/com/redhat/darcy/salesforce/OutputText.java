@@ -53,6 +53,10 @@ public class OutputText extends AbstractViewElement implements Text {
     public OutputText(Locator parent) {
         super(parent);
     }
+    
+    public OutputText(Element parent) {
+        super(parent);
+    }
 
     @Override
     public String getText() {

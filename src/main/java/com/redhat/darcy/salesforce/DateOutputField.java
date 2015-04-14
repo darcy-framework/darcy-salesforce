@@ -56,6 +56,10 @@ public class DateOutputField extends AbstractViewElement implements Text {
         super(parent);
     }
     
+    public DateOutputField(Element parent) {
+        super(parent);
+    }
+    
     @Override
     public boolean isDisplayed() {
        return nestedDate.isDisplayed();

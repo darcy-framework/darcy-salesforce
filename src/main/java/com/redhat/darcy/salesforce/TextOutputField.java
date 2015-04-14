@@ -56,6 +56,10 @@ public class TextOutputField extends AbstractViewElement implements Text {
         super(parent);
     }
     
+    public TextOutputField(Element parent) {
+        super(parent);
+    }
+    
     @Override
     public boolean isDisplayed() {
         return nestedText.isDisplayed();

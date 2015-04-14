@@ -79,6 +79,11 @@ public class DateInputField extends AbstractViewElement implements TextInput,
         super(parent);
         this.formatter = formatter;
     }
+    
+    public DateInputField(Element parent, DateTimeFormatter formatter) {
+        super(parent);
+        this.formatter = formatter;
+    }
 
     @Override
     public void clearAndType(CharSequence... keysToType) {

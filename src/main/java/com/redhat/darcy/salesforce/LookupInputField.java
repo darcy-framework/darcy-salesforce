@@ -66,6 +66,10 @@ public class LookupInputField extends AbstractViewElement
     public LookupInputField(Locator parent) {
         super(parent);
     }
+    
+    public LookupInputField(Element parent) {
+        super(parent);
+    }
 
     public boolean isEnabled() {
         return nestedTextInput.isEnabled() && nestedLink.isEnabled();

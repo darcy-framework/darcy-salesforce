@@ -54,6 +54,10 @@ public class OutputLink extends AbstractViewElement implements Link {
         super(parent);
     }
     
+    public OutputLink(Element parent) {
+        super(parent);
+    }
+    
     @Override
     public void click() {
         nestedLink.click();        

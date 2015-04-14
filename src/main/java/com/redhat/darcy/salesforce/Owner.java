@@ -63,6 +63,10 @@ public class Owner extends AbstractViewElement {
     public Owner(Locator parent) {
         super(parent);
     }
+    
+    public Owner(Element parent) {
+        super(parent);
+    }
 
     public String getOwner() {
         return name.getText();

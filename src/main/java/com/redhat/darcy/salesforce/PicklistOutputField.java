@@ -60,6 +60,10 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
         super(parent);
     }
     
+    public PicklistOutputField(Element parent) {
+        super(parent);
+    }
+    
     @Override
     public boolean isDisplayed() {
         return nestedText.isDisplayed();

@@ -58,6 +58,10 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
     public StaticCheckbox(Locator parent) {
         super(parent);
     }
+    
+    public StaticCheckbox(Element parent) {
+        super(parent);
+    }
 
     @Override
     public void check() {
