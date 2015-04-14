@@ -19,6 +19,10 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
+import static com.redhat.darcy.ui.Elements.link;
+import static com.redhat.darcy.ui.Elements.textInput;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
@@ -28,15 +32,10 @@ import com.redhat.darcy.ui.api.elements.TextInput;
 import com.redhat.darcy.ui.api.elements.Link;
 import com.redhat.darcy.web.By;
 
-import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
-import static com.redhat.darcy.ui.Elements.link;
-import static com.redhat.darcy.ui.Elements.textInput;
-
 /**
  * ViewElement representing the Salesforce record's Lookup field.  Includes 
  * the text input field and the Lookup (magnifying glass icon) link.
  */
-
 public class LookupInputField extends AbstractViewElement 
     implements Requireable {
     

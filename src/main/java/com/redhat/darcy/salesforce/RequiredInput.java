@@ -19,13 +19,13 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.ui.By.xpath;
+import static com.redhat.darcy.ui.Elements.element;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
-
-import static com.redhat.darcy.ui.By.xpath;
-import static com.redhat.darcy.ui.Elements.element;
 
 /**
  * Special element type used to identify when a Salesforce element is 

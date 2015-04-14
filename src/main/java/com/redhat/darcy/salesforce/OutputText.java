@@ -19,14 +19,14 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.ui.Elements.text;
+import static com.redhat.darcy.web.By.htmlTag;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Text;
-
-import static com.redhat.darcy.ui.Elements.text;
-import static com.redhat.darcy.web.By.htmlTag;
 
 /**
  * Text which does not correspond to a field on a Salesforce object.

@@ -19,6 +19,12 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
+import static com.redhat.darcy.ui.By.xpath;
+import static com.redhat.darcy.ui.Elements.link;
+import static com.redhat.darcy.ui.Elements.textInput;
+import static com.redhat.darcy.web.By.htmlTag;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
@@ -27,12 +33,6 @@ import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
 import com.redhat.darcy.ui.api.elements.Requireable;
 import com.redhat.darcy.ui.api.elements.TextInput;
-
-import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
-import static com.redhat.darcy.ui.By.xpath;
-import static com.redhat.darcy.ui.Elements.link;
-import static com.redhat.darcy.ui.Elements.textInput;
-import static com.redhat.darcy.web.By.htmlTag;
 
 import java.time.LocalDate;
 

@@ -19,15 +19,15 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.web.By.htmlTag;
+import static com.redhat.darcy.web.HtmlElements.htmlElement;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Checkbox;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.web.api.elements.HtmlElement;
-
-import static com.redhat.darcy.web.By.htmlTag;
-import static com.redhat.darcy.web.HtmlElements.htmlElement;
 
 /**
  * A ViewElement which corresponds to the checkbox 'image' on 

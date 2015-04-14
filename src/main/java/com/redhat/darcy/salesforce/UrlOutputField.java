@@ -19,14 +19,14 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.ui.Elements.link;
+import static com.redhat.darcy.web.By.htmlTag;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
-
-import static com.redhat.darcy.ui.Elements.link;
-import static com.redhat.darcy.web.By.htmlTag;
 
 /**
  * An HTML link element for a value that corresponds to a URL field on 

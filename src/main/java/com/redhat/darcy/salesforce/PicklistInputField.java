@@ -19,6 +19,10 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
+import static com.redhat.darcy.ui.By.chained;
+import static com.redhat.darcy.web.By.htmlTag;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.Elements;
 import com.redhat.darcy.ui.annotations.Require;
@@ -27,10 +31,6 @@ import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Requireable;
 import com.redhat.darcy.ui.api.elements.Select;
 import com.redhat.darcy.ui.api.elements.SelectOption;
-
-import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
-import static com.redhat.darcy.ui.By.chained;
-import static com.redhat.darcy.web.By.htmlTag;
 
 import java.util.List;
 import java.util.Optional;

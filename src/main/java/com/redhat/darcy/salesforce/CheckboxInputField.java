@@ -19,16 +19,16 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
+import static com.redhat.darcy.ui.Elements.checkbox;
+import static com.redhat.darcy.web.By.htmlTag;
+
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Checkbox;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Requireable;
-
-import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
-import static com.redhat.darcy.ui.Elements.checkbox;
-import static com.redhat.darcy.web.By.htmlTag;
 
 /**
  * An HTML input element for a value that corresponds to a checkbox field on 
