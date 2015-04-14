@@ -21,7 +21,6 @@ package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.ui.Elements.text;
 import static com.redhat.darcy.web.By.htmlTag;
-import static java.util.Arrays.asList;
 
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.RequireAll;
@@ -29,8 +28,10 @@ import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Text;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Text output for a value that corresponds to a Picklist field on 
@@ -74,11 +75,12 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
         return nestedText.getText();
     }
     
-    public List<String> getSelectedValues(){
-        List<String> values = new ArrayList<String>(
-                asList(nestedText.getText().split(";")));
-        values.removeAll(asList(null, ""));
-        return values;
+    public List<String> getSelectedOptions(){
+        return Arrays.stream(nestedText.getText().split(";"))
+            .filter(Objects::nonNull)
+            .peek(String::trim)
+            .filter(String::isEmpty)
+            .collect(Collectors.toList());
     }
 
 }
