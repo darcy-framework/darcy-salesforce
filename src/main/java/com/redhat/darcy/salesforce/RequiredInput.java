@@ -19,6 +19,7 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.ui.By.nested;
 import static com.redhat.darcy.ui.By.xpath;
 import static com.redhat.darcy.ui.Elements.element;
 
@@ -36,14 +37,18 @@ public class RequiredInput extends AbstractViewElement implements Element {
     @Require
     private Element parent = super.parent;
     
-    private Element requiredInput = element(byInner(
+    private Element requiredInput = element(nested(parent,
             xpath("//div[contains(@class, 'requiredInput')]")));
 
-    public static RequiredInput requiredInput(Locator locator) {
-        return new RequiredInput(locator);
+    public static RequiredInput requiredInput(Element parent) {
+        return new RequiredInput(parent);
     }
 
     public RequiredInput(Locator parent) {
+        super(parent);
+    }
+    
+    public RequiredInput(Element parent) {
         super(parent);
     }
 
