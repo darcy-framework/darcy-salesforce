@@ -41,9 +41,9 @@ public class InputText extends AbstractViewElement implements TextInput,
     private Element parent = super.parent;
     
     @Require
-    private TextInput nestedTextInput  = textInput(byInner(htmlTag("input")));
+    private TextInput nestedTextInput = textInput(byInner(htmlTag("input")));
     
-    private RequiredInput requiredInput;
+    private RequiredInput requiredInput = requiredInput(parent);
 
     /**
      * An HTML input element of type text which does not correspond to a field 
@@ -59,7 +59,6 @@ public class InputText extends AbstractViewElement implements TextInput,
 
     public InputText(Locator parent) {
         super(parent);
-        requiredInput = requiredInput(parent);
     }
 
     @Override

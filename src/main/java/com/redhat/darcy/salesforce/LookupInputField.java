@@ -49,7 +49,7 @@ public class LookupInputField extends AbstractViewElement
     private Link nestedLink = link(byInner(By.htmlTag("span"), 
             By.htmlTag("input")));
     
-    private RequiredInput requiredInput;
+    private RequiredInput requiredInput = requiredInput(parent);
     
     /**
      * A ViewElement that corresponds to a Salesforce Lookup field on 
@@ -65,7 +65,6 @@ public class LookupInputField extends AbstractViewElement
     
     public LookupInputField(Locator parent) {
         super(parent);
-        requiredInput = requiredInput(parent);
     }
 
     public boolean isEnabled() {

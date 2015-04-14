@@ -60,7 +60,7 @@ public class DateInputField extends AbstractViewElement implements TextInput,
             xpath("//span[contains(@class,'dateInput')]"),
             htmlTag("span"), htmlTag("a")));
 
-    private RequiredInput requiredInput;
+    private RequiredInput requiredInput = requiredInput(parent);
     
     /**
      * A ViewElement that corresponds to a Date field on
@@ -78,8 +78,6 @@ public class DateInputField extends AbstractViewElement implements TextInput,
     public DateInputField(Locator parent, DateTimeFormatter formatter) {
         super(parent);
         this.formatter = formatter;
-        requiredInput = requiredInput(parent);
-
     }
 
     @Override

@@ -43,7 +43,7 @@ public class TextInputField extends AbstractViewElement implements TextInput,
     @Require
     private TextInput nestedTextInput = textInput(byInner(htmlTag("input")));
     
-    private RequiredInput requiredInput;
+    private RequiredInput requiredInput = requiredInput(parent);
 
     /**
      * HTML input element for a value that corresponds to a text field on 
@@ -59,7 +59,6 @@ public class TextInputField extends AbstractViewElement implements TextInput,
 
     public TextInputField(Locator parent) {
         super(parent);
-        requiredInput = requiredInput(parent);
     }
 
     @Override

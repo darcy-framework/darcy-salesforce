@@ -48,7 +48,7 @@ public class PicklistInputField extends AbstractViewElement
     @Require
     private Select<SelectOption> select;
     
-    private RequiredInput requiredInput;
+    private RequiredInput requiredInput = requiredInput(parent);
 
     
     public static PicklistInputField picklistInputField(Locator locator) {
@@ -66,7 +66,6 @@ public class PicklistInputField extends AbstractViewElement
     public PicklistInputField(Locator parent) {
         super(parent);
         select = Elements.select(chained(parent, htmlTag("select")));
-        requiredInput = requiredInput(parent);
     }
 
     @Override

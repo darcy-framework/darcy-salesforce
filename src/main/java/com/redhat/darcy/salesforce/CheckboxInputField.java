@@ -43,7 +43,7 @@ public class CheckboxInputField extends AbstractViewElement implements Checkbox,
     @Require
     private Checkbox nestedCheckbox = checkbox(byInner(htmlTag("input")));
     
-    private RequiredInput requiredInput;
+    private RequiredInput requiredInput = requiredInput(parent);
 
     /**
      * An HTML input element for a value that corresponds to a checkbox field 
@@ -59,7 +59,10 @@ public class CheckboxInputField extends AbstractViewElement implements Checkbox,
 
     public CheckboxInputField(Locator parent) {
         super(parent);
-        requiredInput = requiredInput(parent);
+    }
+    
+    public CheckboxInputField(Element parent) {
+        super(parent);
     }
 
     @Override
