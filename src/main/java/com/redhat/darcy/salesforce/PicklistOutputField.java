@@ -75,11 +75,11 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
         return nestedText.getText();
     }
     
-    public String[] getSelectedValues(){
+    public List<String> getSelectedValues(){
         List<String> values = new ArrayList<String>(
                 asList(nestedText.getText().split(";")));
         values.removeAll(asList(null, ""));
-        return values.toArray(new String[values.size()]);
+        return values;
     }
 
 }
