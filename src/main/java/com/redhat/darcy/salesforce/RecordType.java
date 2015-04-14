@@ -35,7 +35,6 @@ import com.redhat.darcy.ui.api.elements.Text;
  * ViewElement representing the Salesforce record's Record Type field.  Includes 
  * the text name Record Type and [Change] link.
  */
-
 public class RecordType extends AbstractViewElement {
 
     @Require
