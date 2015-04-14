@@ -38,10 +38,6 @@ public class OutputLink extends AbstractViewElement implements Link {
     
     private Link nestedLink = link(byInner(htmlTag("a")));
     
-    public static OutputLink outputLink(Locator locator) {
-        return new OutputLink(locator);
-    }
-
     /**
      * HTML link (text or image) which does not correspond to a field on a 
      * Salesforce object.  Takes the locator returned from BySalesforce and 
@@ -50,6 +46,10 @@ public class OutputLink extends AbstractViewElement implements Link {
      * @param locator  Locator returned from BySalesforce
      * @return OutputLink
      */
+    public static OutputLink outputLink(Locator locator) {
+        return new OutputLink(locator);
+    }
+
     public OutputLink(Locator parent) {
         super(parent);
     }

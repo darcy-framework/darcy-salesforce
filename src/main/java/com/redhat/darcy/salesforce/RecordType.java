@@ -53,6 +53,10 @@ public class RecordType extends AbstractViewElement {
      * @param locator Locator returned from BySalesforce
      * @return RecordType
      */
+    public static RecordType recordType(Locator locator) {
+        return new RecordType(locator);
+    }
+    
     public RecordType(Locator parent) {
         super(parent);
     }

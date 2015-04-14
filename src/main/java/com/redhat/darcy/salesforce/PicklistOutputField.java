@@ -44,10 +44,6 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
     
     private Text nestedText = text(byInner(htmlTag("div")));
     
-    public static PicklistOutputField picklistOutputField(Locator locator) {
-        return new PicklistOutputField(locator);
-    }
-    
     /**
      * Text which corresponds to a picklist field on a Salesforce object.  Takes 
      * the locator returned from BySalesforce and finds the text nested 
@@ -56,6 +52,10 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
      * @param locator  Locator returned from BySalesforce
      * @return TextOutputField
      */
+    public static PicklistOutputField picklistOutputField(Locator locator) {
+        return new PicklistOutputField(locator);
+    }
+    
     public PicklistOutputField(Locator parent) {
         super(parent);
     }

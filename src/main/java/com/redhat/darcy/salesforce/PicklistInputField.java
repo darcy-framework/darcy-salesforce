@@ -53,11 +53,6 @@ public class PicklistInputField extends AbstractViewElement
     
     private RequiredInput requiredInput = requiredInput(parent);
 
-    
-    public static PicklistInputField picklistInputField(Locator locator) {
-        return new PicklistInputField(locator);
-    }
-    
     /**
      * HTML select element for a value that corresponds to a text field on 
      * a Salesforce object.  Takes the locator returned from BySalesforce 
@@ -66,6 +61,10 @@ public class PicklistInputField extends AbstractViewElement
      * @param locator  Locator returned from BySalesforce
      * @return PicklistInputField
      */
+    public static PicklistInputField picklistInputField(Locator locator) {
+        return new PicklistInputField(locator);
+    }
+    
     public PicklistInputField(Locator parent) {
         super(parent);
     }

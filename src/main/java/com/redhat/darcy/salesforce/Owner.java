@@ -47,7 +47,6 @@ public class Owner extends AbstractViewElement {
     @Require
     private Link avatar  = link(byInner(xpath("//div/span/a[1]")));
 
-
     /**
      * A ViewElement that corresponds to the Salesforce Owner field on 
      * a Salesforce object.  Takes the locator returned from BySalesforce and 
