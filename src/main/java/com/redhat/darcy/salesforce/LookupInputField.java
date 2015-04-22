@@ -47,7 +47,7 @@ public class LookupInputField extends AbstractViewElement
             By.htmlTag("input")));
     
     private Link nestedLink = link(byInner(By.htmlTag("span"), 
-            By.htmlTag("input")));
+            By.htmlTag("a")));
     
     private RequiredInput requiredInput = requiredInput(parent);
     
