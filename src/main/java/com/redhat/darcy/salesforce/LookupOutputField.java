@@ -19,11 +19,11 @@
 
 package com.redhat.darcy.salesforce;
 
+import static com.redhat.darcy.ui.By.xpath;
 import static com.redhat.darcy.ui.Elements.link;
-import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.RequireAll;
+import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
@@ -32,12 +32,12 @@ import com.redhat.darcy.ui.api.elements.Link;
  * Link element for a value that corresponds to a Lookup field on 
  * a Salesforce object.
  */
-@RequireAll
 public class LookupOutputField extends AbstractViewElement implements Link {
-
+    
+    @Require
     private Element parent = super.parent;
     
-    private Link nestedLink = link(byInner(htmlTag("a")));
+    private Link nestedLink = link(byInner(xpath("./div/a | ./a")));
     
     /**
      * Link which corresponds to a lookup field on a Salesforce object.  Takes 
@@ -72,16 +72,6 @@ public class LookupOutputField extends AbstractViewElement implements Link {
     @Override
     public String getText() {
         return nestedLink.getText();
-    }
-
-    @Override
-    public boolean isDisplayed() {
-        return nestedLink.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return nestedLink.isPresent();
     }
 
     @Override

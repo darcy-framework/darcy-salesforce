@@ -74,16 +74,6 @@ public class OutputLink extends AbstractViewElement implements Link {
     }
 
     @Override
-    public boolean isDisplayed() {
-        return nestedLink.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return nestedLink.isPresent();
-    }
-
-    @Override
     public String getLinkText() {
         return nestedLink.getText();
     }

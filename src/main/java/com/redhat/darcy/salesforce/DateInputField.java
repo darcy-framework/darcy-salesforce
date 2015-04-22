@@ -111,16 +111,6 @@ public class DateInputField extends AbstractViewElement implements TextInput,
     }
 
     @Override
-    public boolean isDisplayed() {
-        return nestedTextInput.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return nestedTextInput.isPresent();
-    }
-
-    @Override
     public String getValue() {
         return nestedTextInput.getValue();
     }
