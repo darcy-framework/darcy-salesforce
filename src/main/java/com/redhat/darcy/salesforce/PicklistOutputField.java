@@ -20,13 +20,12 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.ui.Elements.text;
-import static com.redhat.darcy.web.By.htmlTag;
 
-import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.AbstractView;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
-import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Text;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,11 +37,9 @@ import java.util.stream.Collectors;
  * a Salesforce object.
  */
 @RequireAll
-public class PicklistOutputField extends AbstractViewElement implements Text {
-
-    private Element parent = super.parent;
+public class PicklistOutputField extends AbstractView implements Text {
     
-    private Text nestedText = text(byInner(htmlTag("div")));
+    private Text nestedText;
     
     /**
      * Text which corresponds to a picklist field on a Salesforce object.  Takes 
@@ -56,22 +53,8 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
         return new PicklistOutputField(locator);
     }
     
-    public PicklistOutputField(Locator parent) {
-        super(parent);
-    }
-    
-    public PicklistOutputField(Element parent) {
-        super(parent);
-    }
-    
-    @Override
-    public boolean isDisplayed() {
-        return nestedText.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return nestedText.isPresent();
+    public PicklistOutputField(Locator locator) {
+        nestedText = text(locator);
     }
 
     @Override
@@ -85,6 +68,16 @@ public class PicklistOutputField extends AbstractViewElement implements Text {
             .peek(String::trim)
             .filter(String::isEmpty)
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean isDisplayed() {
+        return nestedText.isDisplayed();
+    }
+
+    @Override
+    public boolean isPresent() {
+        return nestedText.isPresent();
     }
 
 }

@@ -22,6 +22,7 @@ package com.redhat.darcy.salesforce;
 import static com.redhat.darcy.ui.Elements.text;
 import static com.redhat.darcy.web.By.htmlTag;
 
+import com.redhat.darcy.ui.AbstractView;
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
@@ -34,11 +35,9 @@ import com.redhat.darcy.ui.api.elements.Text;
  */
 
 @RequireAll
-public class TextOutputField extends AbstractViewElement implements Text {
-
-    private Element parent = super.parent;
+public class TextOutputField extends AbstractView implements Text {
     
-    private Text nestedText = text(byInner(htmlTag("div")));
+    private Text nestedText;
     
     /**
      * Text which corresponds to a text field on a Salesforce object.  Takes 
@@ -52,12 +51,8 @@ public class TextOutputField extends AbstractViewElement implements Text {
         return new TextOutputField(locator);
     }
     
-    public TextOutputField(Locator parent) {
-        super(parent);
-    }
-    
-    public TextOutputField(Element parent) {
-        super(parent);
+    public TextOutputField(Locator locator) {
+        nestedText = text(locator);
     }
     
     @Override

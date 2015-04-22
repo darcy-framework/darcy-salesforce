@@ -20,23 +20,19 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.ui.Elements.text;
-import static com.redhat.darcy.web.By.htmlTag;
 
-import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.AbstractView;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
-import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Text;
 
 /**
  * Text which does not correspond to a field on a Salesforce object.
  */
 @RequireAll
-public class OutputText extends AbstractViewElement implements Text {
-
-    private Element parent = super.parent;
+public class OutputText extends AbstractView implements Text {
     
-    private Text nestedText = text(byInner(htmlTag("div")));
+    private Text nestedText;
 
     /**
      * Text which does not correspond to a field on a Salesforce 
@@ -50,12 +46,8 @@ public class OutputText extends AbstractViewElement implements Text {
         return new OutputText(locator);
     }
 
-    public OutputText(Locator parent) {
-        super(parent);
-    }
-    
-    public OutputText(Element parent) {
-        super(parent);
+    public OutputText(Locator locator) {
+        nestedText = text(locator);
     }
 
     @Override

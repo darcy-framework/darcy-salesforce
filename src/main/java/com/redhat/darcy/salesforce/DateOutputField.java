@@ -20,12 +20,10 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.ui.Elements.text;
-import static com.redhat.darcy.web.By.htmlTag;
 
-import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.AbstractView;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
-import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Text;
 
 import java.time.LocalDate;
@@ -34,11 +32,9 @@ import java.time.LocalDate;
  * The text output of a Date field on a Salesforce object.
  */
 @RequireAll
-public class DateOutputField extends AbstractViewElement implements Text {
-
-    private Element parent = super.parent;
+public class DateOutputField extends AbstractView implements Text {
     
-    private Text nestedDate  = text(byInner(htmlTag("div")));
+    private Text nestedDate;
     
     /**
      * Text which corresponds to a Date field on a Salesforce object.  Takes 
@@ -52,14 +48,10 @@ public class DateOutputField extends AbstractViewElement implements Text {
         return new DateOutputField(locator);
     }
     
-    public DateOutputField(Locator parent) {
-        super(parent);
+    public DateOutputField(Locator locator) {
+        nestedDate = text(locator);
     }
-    
-    public DateOutputField(Element parent) {
-        super(parent);
-    }
-    
+        
     @Override
     public boolean isDisplayed() {
        return nestedDate.isDisplayed();
