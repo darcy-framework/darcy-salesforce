@@ -19,7 +19,7 @@
 
 package com.redhat.darcy.salesforce;
 
-import static com.redhat.darcy.web.By.htmlTag;
+import static com.redhat.darcy.ui.By.xpath;
 import static com.redhat.darcy.web.HtmlElements.htmlElement;
 
 import com.redhat.darcy.ui.AbstractViewElement;
@@ -40,7 +40,7 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
     
     private Element parent = super.parent;
     
-    private HtmlElement backingImage = htmlElement(byInner(htmlTag("img")));
+    private HtmlElement backingImage = htmlElement(byInner(xpath("./div/img | ./img")));
 
     /**
      * A ViewElement which corresponds to the checkbox 'image' on 
@@ -57,6 +57,7 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
 
     public StaticCheckbox(Locator parent) {
         super(parent);
+        
     }
     
     public StaticCheckbox(Element parent) {
@@ -79,6 +80,7 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
 
     @Override
     public boolean isChecked() {
+        System.out.println(backingImage.getAttribute("src"));
         return !backingImage.getAttribute("src").contains("unchecked");
     }
 
