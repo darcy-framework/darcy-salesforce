@@ -32,7 +32,7 @@ public class StaticCheckboxTest {
 
     @Before
     public void stubOutMocks() {
-        when(mockContext.findByNested(HtmlElement.class, parent, By.htmlTag("img"))).thenReturn(mockBackingImage);
+        when(mockContext.findByNested(HtmlElement.class, parent, By.xpath("./div/img | ./img"))).thenReturn(mockBackingImage);
         when(mockContext.findById(Element.class, "blah")).thenReturn(parent);
     }
 
