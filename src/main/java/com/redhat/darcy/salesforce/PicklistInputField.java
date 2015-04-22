@@ -49,7 +49,7 @@ public class PicklistInputField extends AbstractViewElement
     
     @Require
     private Select<SelectOption> select = Elements.select(
-            nested(parent, htmlTag("select")));;
+            nested(parent, htmlTag("select")));
     
     private RequiredInput requiredInput = requiredInput(parent);
 
