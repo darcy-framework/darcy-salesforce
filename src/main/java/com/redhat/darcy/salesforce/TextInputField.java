@@ -24,7 +24,8 @@ import static com.redhat.darcy.ui.Elements.textInput;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Requireable;
@@ -34,15 +35,15 @@ import com.redhat.darcy.ui.api.elements.TextInput;
  * An HTML input element for a value that corresponds to a text field on 
  * a Salesforce object.
  */
+@RequireAll
 public class TextInputField extends AbstractViewElement implements TextInput, 
     Requireable {
 
-    @Require
     private Element parent = super.parent;
     
-    @Require
     private TextInput nestedTextInput = textInput(byInner(htmlTag("input")));
     
+    @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
 
     /**

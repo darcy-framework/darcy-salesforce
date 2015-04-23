@@ -24,7 +24,8 @@ import static com.redhat.darcy.ui.By.xpath;
 import static com.redhat.darcy.ui.Elements.element;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 
@@ -32,11 +33,12 @@ import com.redhat.darcy.ui.api.elements.Element;
  * Special element type used to identify when a Salesforce element is 
  * wrapped in a requiredInput div.
  */
+@RequireAll
 public class RequiredInput extends AbstractViewElement implements Element {
 
-    @Require
     private Element parent = super.parent;
     
+    @NotRequired
     private Element requiredInput = element(nested(parent,
             xpath("//div[contains(@class, 'requiredInput')]")));
 

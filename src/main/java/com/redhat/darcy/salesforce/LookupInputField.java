@@ -24,7 +24,8 @@ import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.ui.Elements.textInput;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Requireable;
@@ -36,19 +37,19 @@ import com.redhat.darcy.web.By;
  * ViewElement representing the Salesforce record's Lookup field.  Includes 
  * the text input field and the Lookup (magnifying glass icon) link.
  */
+@RequireAll
 public class LookupInputField extends AbstractViewElement 
     implements Requireable {
-    
-    @Require
+
     private Element parent = super.parent;
-    
-    @Require
+
     private TextInput nestedTextInput = textInput(byInner(By.htmlTag("span"), 
             By.htmlTag("input")));
-    
+
     private Link nestedLink = link(byInner(By.htmlTag("span"), 
             By.htmlTag("a")));
     
+    @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
     
     /**

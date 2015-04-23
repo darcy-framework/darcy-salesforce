@@ -26,7 +26,8 @@ import static com.redhat.darcy.ui.Elements.textInput;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.DateInput;
 import com.redhat.darcy.ui.api.elements.Element;
@@ -41,24 +42,23 @@ import java.time.format.DateTimeFormatter;
  * An ViewElement for a value that corresponds to a Date field on 
  * a Salesforce object.
  */
+@RequireAll
 public class DateInputField extends AbstractViewElement implements TextInput, 
     DateInput, Link, Requireable {
 
     private DateTimeFormatter formatter;
     
-    @Require
     private Element parent = super.parent;
 
-    @Require
     private TextInput nestedTextInput = textInput(byInner( 
             xpath("//span[contains(@class,'dateInput')]"),
             htmlTag("input")));
 
-    @Require
     private Link nestedLink = link(byInner(
             xpath("//span[contains(@class,'dateInput')]"),
             htmlTag("span"), htmlTag("a")));
 
+    @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
     
     /**

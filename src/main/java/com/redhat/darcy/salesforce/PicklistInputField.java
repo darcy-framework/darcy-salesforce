@@ -20,19 +20,18 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
-import static com.redhat.darcy.ui.By.chained;
 import static com.redhat.darcy.ui.By.nested;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.Elements;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Requireable;
 import com.redhat.darcy.ui.api.elements.Select;
 import com.redhat.darcy.ui.api.elements.SelectOption;
-import com.redhat.darcy.web.By;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,16 +40,16 @@ import java.util.Optional;
  * An HTML select element for a value that corresponds to a picklist field on 
  * a Salesforce object.
  */
+@RequireAll
 public class PicklistInputField extends AbstractViewElement 
     implements Select<SelectOption>, Requireable {
 
-    @Require
     private Element parent = super.parent;
     
-    @Require
     private Select<SelectOption> select = Elements.select(
             nested(parent, htmlTag("select")));
     
+    @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
 
     /**

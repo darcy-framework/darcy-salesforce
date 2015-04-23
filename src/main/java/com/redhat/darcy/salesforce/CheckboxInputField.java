@@ -24,7 +24,8 @@ import static com.redhat.darcy.ui.Elements.checkbox;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Checkbox;
 import com.redhat.darcy.ui.api.elements.Element;
@@ -34,15 +35,15 @@ import com.redhat.darcy.ui.api.elements.Requireable;
  * An HTML input element for a value that corresponds to a checkbox field on 
  * a Salesforce object.
  */
+@RequireAll
 public class CheckboxInputField extends AbstractViewElement implements Checkbox,
     Requireable {
 
-    @Require
     private Element parent = super.parent;
     
-    @Require
     private Checkbox nestedCheckbox = checkbox(byInner(htmlTag("input")));
     
+    @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
 
     /**
