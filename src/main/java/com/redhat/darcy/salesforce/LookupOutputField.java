@@ -23,7 +23,8 @@ import static com.redhat.darcy.ui.By.xpath;
 import static com.redhat.darcy.ui.Elements.link;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
@@ -32,11 +33,12 @@ import com.redhat.darcy.ui.api.elements.Link;
  * Link element for a value that corresponds to a Lookup field on 
  * a Salesforce object.
  */
+@RequireAll
 public class LookupOutputField extends AbstractViewElement implements Link {
-    
-    @Require
+
     private Element parent = super.parent;
     
+    @NotRequired
     private Link nestedLink = link(byInner(xpath("./div/a | ./a")));
     
     /**

@@ -24,7 +24,9 @@ import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.annotations.NotRequired;
 import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
@@ -33,18 +35,18 @@ import com.redhat.darcy.ui.api.elements.Link;
  * ViewElement representing the Salesforce record's Owner field.  Includes the 
  * Avatar image link, Owner name link, and [Change] link.
  */
+@RequireAll
 public class Owner extends AbstractViewElement {
 
-    @Require
+    
     private Element parent = super.parent;
     
+    @NotRequired
     private Link change = link(byInner(htmlTag("div"),
             xpath("//a[text()='[Change]']")));
 
-    @Require
     private Link name = link(byInner(xpath("//div/span/a[2]")));
 
-    @Require
     private Link avatar  = link(byInner(xpath("//div/span/a[1]")));
 
     /**
