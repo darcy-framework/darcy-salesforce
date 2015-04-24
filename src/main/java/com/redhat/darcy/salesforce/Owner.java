@@ -25,7 +25,6 @@ import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.NotRequired;
-import com.redhat.darcy.ui.annotations.Require;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
@@ -38,7 +37,6 @@ import com.redhat.darcy.ui.api.elements.Link;
 @RequireAll
 public class Owner extends AbstractViewElement {
 
-    
     private Element parent = super.parent;
     
     @NotRequired
