@@ -75,6 +75,10 @@ public class Owner extends AbstractViewElement {
          name.click();
     }
 
+    public boolean hasChangeLink() {
+        return change.isDisplayed();
+    }
+    
     public void change() {
         change.click();
     }
