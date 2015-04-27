@@ -36,8 +36,6 @@ import com.redhat.darcy.ui.api.elements.Element;
 @RequireAll
 public class RequiredInput extends AbstractViewElement implements Element {
 
-    private Element parent = super.parent;
-    
     @NotRequired
     private Element requiredInput = element(nested(parent,
             xpath("//div[contains(@class, 'requiredInput')]")));

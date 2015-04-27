@@ -39,10 +39,8 @@ import com.redhat.darcy.ui.api.elements.TextInput;
 public class TextInputField extends AbstractViewElement implements TextInput, 
     Requireable {
 
-    private Element parent = super.parent;
-    
     private TextInput nestedTextInput = textInput(byInner(htmlTag("input")));
-    
+
     @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
 

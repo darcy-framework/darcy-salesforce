@@ -43,8 +43,6 @@ import java.util.Optional;
 @RequireAll
 public class PicklistInputField extends AbstractViewElement 
     implements Select<SelectOption>, Requireable {
-
-    private Element parent = super.parent;
     
     private Select<SelectOption> select = Elements.select(
             nested(parent, htmlTag("select")));

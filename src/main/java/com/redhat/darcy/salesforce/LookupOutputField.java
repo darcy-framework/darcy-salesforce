@@ -36,8 +36,6 @@ import com.redhat.darcy.ui.api.elements.Link;
 @RequireAll
 public class LookupOutputField extends AbstractViewElement implements Link {
 
-    private Element parent = super.parent;
-    
     @NotRequired
     private Link nestedLink = link(byInner(xpath("./div/a | ./a")));
     

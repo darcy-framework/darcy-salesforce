@@ -47,8 +47,6 @@ public class DateInputField extends AbstractViewElement implements TextInput,
     DateInput, Link, Requireable {
 
     private DateTimeFormatter formatter;
-    
-    private Element parent = super.parent;
 
     private TextInput nestedTextInput = textInput(byInner( 
             xpath("//span[contains(@class,'dateInput')]"),

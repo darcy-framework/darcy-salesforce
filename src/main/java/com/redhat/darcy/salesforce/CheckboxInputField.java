@@ -39,8 +39,6 @@ import com.redhat.darcy.ui.api.elements.Requireable;
 public class CheckboxInputField extends AbstractViewElement implements Checkbox,
     Requireable {
 
-    private Element parent = super.parent;
-    
     private Checkbox nestedCheckbox = checkbox(byInner(htmlTag("input")));
     
     @NotRequired

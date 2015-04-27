@@ -23,6 +23,7 @@ import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.annotations.NotRequired;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
@@ -34,8 +35,7 @@ import com.redhat.darcy.ui.api.elements.Link;
 @RequireAll
 public class OutputLink extends AbstractViewElement implements Link {
 
-    private Element parent = super.parent;
-    
+    @NotRequired
     private Link nestedLink = link(byInner(htmlTag("a")));
     
     /**

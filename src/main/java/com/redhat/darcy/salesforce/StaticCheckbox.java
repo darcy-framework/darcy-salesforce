@@ -38,8 +38,6 @@ import com.redhat.darcy.web.api.elements.HtmlElement;
 @RequireAll
 public class StaticCheckbox extends AbstractViewElement implements Checkbox {
     
-    private Element parent = super.parent;
-    
     private HtmlElement backingImage = htmlElement(byInner(xpath("./div/img | ./img")));
 
     /**

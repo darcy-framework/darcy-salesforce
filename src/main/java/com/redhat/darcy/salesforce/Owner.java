@@ -37,8 +37,6 @@ import com.redhat.darcy.ui.api.elements.Link;
 @RequireAll
 public class Owner extends AbstractViewElement {
 
-    private Element parent = super.parent;
-    
     @NotRequired
     private Link change = link(byInner(htmlTag("div"),
             xpath("//a[text()='[Change]']")));

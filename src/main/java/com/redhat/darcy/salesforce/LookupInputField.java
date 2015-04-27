@@ -41,8 +41,6 @@ import com.redhat.darcy.web.By;
 public class LookupInputField extends AbstractViewElement 
     implements Requireable {
 
-    private Element parent = super.parent;
-
     private TextInput nestedTextInput = textInput(byInner(By.htmlTag("span"), 
             By.htmlTag("input")));
 

@@ -25,7 +25,8 @@ import static com.redhat.darcy.ui.Elements.text;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
-import com.redhat.darcy.ui.annotations.Require;
+import com.redhat.darcy.ui.annotations.NotRequired;
+import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
@@ -35,14 +36,12 @@ import com.redhat.darcy.ui.api.elements.Text;
  * ViewElement representing the Salesforce record's Record Type field.  Includes 
  * the text name Record Type and [Change] link.
  */
+@RequireAll
 public class RecordType extends AbstractViewElement {
 
-    @Require
-    private Element parent = super.parent;
-    
-    @Require
     private Text recordType = text(byInner(htmlTag("div")));
-
+    
+    @NotRequired
     private Link change = link(byInner(xpath("//a[text()='[Change]']")));
 
     /**
