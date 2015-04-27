@@ -33,9 +33,9 @@ import com.redhat.darcy.ui.api.elements.Text;
 
 @RequireAll
 public class TextOutputField extends AbstractView implements Text {
-    
+
     private Text nestedText;
-    
+
     /**
      * Text which corresponds to a text field on a Salesforce object.  Takes 
      * the locator returned from BySalesforce and finds the text nested 
@@ -47,11 +47,11 @@ public class TextOutputField extends AbstractView implements Text {
     public static TextOutputField textOutputField(Locator locator) {
         return new TextOutputField(locator);
     }
-    
+
     public TextOutputField(Locator locator) {
         nestedText = text(locator);
     }
-    
+
     @Override
     public boolean isDisplayed() {
         return nestedText.isDisplayed();
