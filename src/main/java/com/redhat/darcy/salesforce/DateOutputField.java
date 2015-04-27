@@ -27,15 +27,18 @@ import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Text;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The text output of a Date field on a Salesforce object.
  */
 @RequireAll
 public class DateOutputField extends AbstractView implements Text {
-    
+
+    private DateTimeFormatter formatter;
+
     private Text nestedDate;
-    
+
     /**
      * Text which corresponds to a Date field on a Salesforce object.  Takes 
      * the locator returned from BySalesforce and finds the text nested 
@@ -44,14 +47,16 @@ public class DateOutputField extends AbstractView implements Text {
      * @param locator  Locator returned from BySalesforce
      * @return DateOutputField
      */    
-    public static DateOutputField dateOutputField(Locator locator) {
-        return new DateOutputField(locator);
+    public static DateOutputField dateOutputField(Locator locator,
+            DateTimeFormatter formatter) {
+        return new DateOutputField(locator, formatter);
     }
-    
-    public DateOutputField(Locator locator) {
+
+    public DateOutputField(Locator locator, DateTimeFormatter formatter) {
         nestedDate = text(locator);
+        this.formatter = formatter;
     }
-        
+
     @Override
     public boolean isDisplayed() {
        return nestedDate.isDisplayed();
@@ -66,9 +71,9 @@ public class DateOutputField extends AbstractView implements Text {
     public String getText() {
         return nestedDate.getText();
     }
-    
+
     public LocalDate getDate() {
-        return LocalDate.parse(nestedDate.getText());
+        return LocalDate.parse(nestedDate.getText(), formatter);
     }
 
 }
