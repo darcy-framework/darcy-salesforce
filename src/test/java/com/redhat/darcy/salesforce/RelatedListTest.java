@@ -1,5 +1,11 @@
 package com.redhat.darcy.salesforce;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Link;
@@ -12,12 +18,6 @@ import com.redhat.darcy.web.api.WebContext;
 import com.redhat.darcy.web.api.WebSelection;
 import com.redhat.darcy.web.internal.FindsByClassName;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +29,6 @@ public class RelatedListTest {
     private Element mockSpinner = mock(Element.class);
     private Text mockNoRows = mock(Text.class);
     private Link mockShowMore = mock(Link.class);
-
     private TestRelatedList list = new TestRelatedList(By.id("list"));
 
     @Before
@@ -41,13 +40,11 @@ public class RelatedListTest {
                 .thenReturn(mockNoRows);
         when(mockContext.findByNested(Link.class, parent, By.xpath(".//div[@class='pShowMore']/a")))
                 .thenReturn(mockShowMore);
-
     }
 
     @Before
     public void assignContextToList() {
         list.setContext(mockContext);
-
     }
 
     @Test
@@ -124,4 +121,4 @@ public class RelatedListTest {
         WebSelection find();
     }
 
- }
+}

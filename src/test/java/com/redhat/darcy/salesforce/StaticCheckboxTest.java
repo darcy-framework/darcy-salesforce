@@ -2,7 +2,9 @@ package com.redhat.darcy.salesforce;
 
 import com.redhat.darcy.salesforce.StaticCheckbox;
 
-import com.redhat.darcy.ui.api.Locator;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.internal.FindsById;
 import com.redhat.darcy.ui.internal.FindsByNested;
@@ -13,9 +15,6 @@ import com.redhat.darcy.web.api.WebSelection;
 import com.redhat.darcy.web.api.elements.HtmlElement;
 import com.redhat.darcy.web.internal.FindsByClassName;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,10 +23,8 @@ import org.junit.Test;
 public class StaticCheckboxTest {
 
     private TestContext mockContext = mock(TestContext.class);
-    private Locator locator = mock(Locator.class);
     private Element parent = mock(Element.class);
     private HtmlElement mockBackingImage = mock(HtmlElement.class);
-
     private StaticCheckbox staticCheckbox = new StaticCheckbox(By.id("blah"));
 
     @Before
@@ -39,7 +36,6 @@ public class StaticCheckboxTest {
     @Before
     public void assignContextToElement() {
         staticCheckbox.setContext(mockContext);
-
     }
 
     @Test
@@ -48,16 +44,14 @@ public class StaticCheckboxTest {
         
         staticCheckbox.check();
         verify(mockBackingImage).click();
-        
     }
 
     @Test
-    public void shouldBeAbleToUnCheck() {
+    public void shouldBeAbleToUncheck() {
         when(mockBackingImage.getAttribute("src")).thenReturn("checked");
         
         staticCheckbox.uncheck();
         verify(mockBackingImage).click();
-        
     }
 
     @Test
@@ -106,11 +100,10 @@ public class StaticCheckboxTest {
     public void shouldNeverBeEnabled() {
         assertFalse(staticCheckbox.isEnabled());
     }
-    
+
     private static interface TestContext extends WebContext, FindsById, FindsByXPath, FindsByClassName, FindsByNested {
         @Override
         WebSelection find();
     }
-    
 
 }

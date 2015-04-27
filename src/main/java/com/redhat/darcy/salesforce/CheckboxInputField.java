@@ -40,7 +40,7 @@ public class CheckboxInputField extends AbstractViewElement implements Checkbox,
     Requireable {
 
     private Checkbox nestedCheckbox = checkbox(byInner(htmlTag("input")));
-    
+
     @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
 
@@ -59,7 +59,7 @@ public class CheckboxInputField extends AbstractViewElement implements Checkbox,
     public CheckboxInputField(Locator parent) {
         super(parent);
     }
-    
+
     public CheckboxInputField(Element parent) {
         super(parent);
     }
@@ -95,17 +95,8 @@ public class CheckboxInputField extends AbstractViewElement implements Checkbox,
     }
 
     @Override
-    public boolean isDisplayed() {
-        return nestedCheckbox.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return nestedCheckbox.isPresent();
-    }
-
-    @Override
     public boolean isRequired() {
         return requiredInput.isDisplayed();
     }
+
 }

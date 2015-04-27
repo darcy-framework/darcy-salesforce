@@ -59,7 +59,7 @@ public class InputText extends AbstractViewElement implements TextInput,
     public InputText(Locator parent) {
         super(parent);
     }
-    
+
     public InputText(Element parent) {
         super(parent);
     }
@@ -90,23 +90,13 @@ public class InputText extends AbstractViewElement implements TextInput,
     }
 
     @Override
-    public boolean isDisplayed() {
-        return nestedTextInput.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return nestedTextInput.isPresent();
-    }
-
-    @Override
     public String getValue() {
         return nestedTextInput.getValue();
     }
-
 
     @Override
     public boolean isRequired() {
         return requiredInput.isDisplayed();
     }
+
 }

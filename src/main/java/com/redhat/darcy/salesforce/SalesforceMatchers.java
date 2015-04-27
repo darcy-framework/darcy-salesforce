@@ -19,9 +19,7 @@
 
 package com.redhat.darcy.salesforce;
 
-
 /**
- * Created by jvervaec on 2/25/15.
  */
 public abstract class SalesforceMatchers {
     

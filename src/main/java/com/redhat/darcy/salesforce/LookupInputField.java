@@ -22,6 +22,7 @@ package com.redhat.darcy.salesforce;
 import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
 import static com.redhat.darcy.ui.Elements.link;
 import static com.redhat.darcy.ui.Elements.textInput;
+import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
 import com.redhat.darcy.ui.annotations.NotRequired;
@@ -31,7 +32,6 @@ import com.redhat.darcy.ui.api.elements.Element;
 import com.redhat.darcy.ui.api.elements.Requireable;
 import com.redhat.darcy.ui.api.elements.TextInput;
 import com.redhat.darcy.ui.api.elements.Link;
-import com.redhat.darcy.web.By;
 
 /**
  * ViewElement representing the Salesforce record's Lookup field.  Includes 
@@ -41,15 +41,15 @@ import com.redhat.darcy.web.By;
 public class LookupInputField extends AbstractViewElement 
     implements Requireable {
 
-    private TextInput nestedTextInput = textInput(byInner(By.htmlTag("span"), 
-            By.htmlTag("input")));
+    private TextInput nestedTextInput = textInput(byInner(htmlTag("span"), 
+            htmlTag("input")));
 
-    private Link nestedLink = link(byInner(By.htmlTag("span"), 
-            By.htmlTag("a")));
-    
+    private Link nestedLink = link(byInner(htmlTag("span"), 
+            htmlTag("a")));
+
     @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
-    
+
     /**
      * A ViewElement that corresponds to a Salesforce Lookup field on 
      * a Salesforce object.  Takes the locator returned from BySalesforce and 
@@ -61,25 +61,17 @@ public class LookupInputField extends AbstractViewElement
     public static LookupInputField lookupInputfield(Locator locator) {
         return new LookupInputField(locator);
     }
-    
+
     public LookupInputField(Locator parent) {
         super(parent);
     }
-    
+
     public LookupInputField(Element parent) {
         super(parent);
     }
 
     public boolean isEnabled() {
         return nestedTextInput.isEnabled() && nestedLink.isEnabled();
-    }
-    
-    public boolean isDisplayed() {
-        return nestedTextInput.isDisplayed() && nestedLink.isDisplayed();
-    }
-
-    public boolean isPresent() {
-        return nestedTextInput.isPresent() && nestedLink.isPresent();
     }
 
     public String getValue() {
@@ -97,7 +89,7 @@ public class LookupInputField extends AbstractViewElement
     public void clear() {
         nestedTextInput.clear();
     }
-    
+
     public void lookup(){
         nestedLink.click();
     }

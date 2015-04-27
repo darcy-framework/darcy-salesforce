@@ -20,7 +20,6 @@
 package com.redhat.darcy.salesforce;
 
 import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
-import static com.redhat.darcy.ui.By.nested;
 import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
@@ -44,8 +43,8 @@ import java.util.Optional;
 public class PicklistInputField extends AbstractViewElement 
     implements Select<SelectOption>, Requireable {
     
-    private Select<SelectOption> select = Elements.select(
-            nested(parent, htmlTag("select")));
+    private Select<SelectOption> select = Elements.select(byInner(
+            htmlTag("select")));
     
     @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
@@ -61,11 +60,11 @@ public class PicklistInputField extends AbstractViewElement
     public static PicklistInputField picklistInputField(Locator locator) {
         return new PicklistInputField(locator);
     }
-    
+
     public PicklistInputField(Locator parent) {
         super(parent);
     }
-    
+
     public PicklistInputField(Element parent) {
         super(parent);
     }
@@ -73,16 +72,6 @@ public class PicklistInputField extends AbstractViewElement
     @Override
     public boolean isEnabled() {
         return select.isEnabled();
-    }
-
-    @Override
-    public boolean isDisplayed() {
-        return select.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return select.isPresent();
     }
 
     @Override

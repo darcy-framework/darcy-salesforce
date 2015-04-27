@@ -37,7 +37,7 @@ import com.redhat.darcy.web.api.elements.HtmlElement;
  */
 @RequireAll
 public class StaticCheckbox extends AbstractViewElement implements Checkbox {
-    
+
     private HtmlElement backingImage = htmlElement(byInner(xpath("./div/img | ./img")));
 
     /**
@@ -54,10 +54,9 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
     }
 
     public StaticCheckbox(Locator parent) {
-        super(parent);
-        
+        super(parent);        
     }
-    
+
     public StaticCheckbox(Element parent) {
         super(parent);
     }
@@ -78,7 +77,6 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
 
     @Override
     public boolean isChecked() {
-        System.out.println(backingImage.getAttribute("src"));
         return !backingImage.getAttribute("src").contains("unchecked");
     }
 
@@ -93,17 +91,8 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
     }
 
     @Override
-    public boolean isDisplayed() {
-        return backingImage.isDisplayed();
-    }
-
-    @Override
-    public boolean isPresent() {
-        return backingImage.isPresent();
-    }
-
-    @Override
     public boolean isEnabled() {
         return false;
     }
+
 }

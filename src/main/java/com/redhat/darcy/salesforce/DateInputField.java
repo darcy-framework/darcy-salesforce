@@ -58,7 +58,7 @@ public class DateInputField extends AbstractViewElement implements TextInput,
 
     @NotRequired
     private RequiredInput requiredInput = requiredInput(parent);
-    
+
     /**
      * A ViewElement that corresponds to a Date field on
      * a Salesforce object.  Takes the locator returned from BySalesforce and 
@@ -76,7 +76,7 @@ public class DateInputField extends AbstractViewElement implements TextInput,
         super(parent);
         this.formatter = formatter;
     }
-    
+
     public DateInputField(Element parent, DateTimeFormatter formatter) {
         super(parent);
         this.formatter = formatter;
