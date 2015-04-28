@@ -45,6 +45,8 @@ public class DateOutputField extends AbstractView implements Text {
      * below.
      * 
      * @param locator  Locator returned from BySalesforce
+     * @param formatter DateTimeFormatter Date time format to use when 
+     * returning date values
      * @return DateOutputField
      */    
     public static DateOutputField dateOutputField(Locator locator,

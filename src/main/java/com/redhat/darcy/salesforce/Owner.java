@@ -48,7 +48,9 @@ public class Owner extends AbstractViewElement {
     /**
      * A ViewElement that corresponds to the Salesforce Owner field on 
      * a Salesforce object.  Takes the locator returned from BySalesforce and 
-     * finds the relevant tags nested below.
+     * finds the anchor tags for the avatar image, name link, and [Change] link 
+     * nested below.  The [Change] link presence is determined by the user's 
+     * profile permissions.
      * 
      * @param locator Locator returned from BySalesforce
      * @return Owner

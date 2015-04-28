@@ -53,7 +53,7 @@ public class LookupInputField extends AbstractViewElement
     /**
      * A ViewElement that corresponds to a Salesforce Lookup field on 
      * a Salesforce object.  Takes the locator returned from BySalesforce and 
-     * finds the relevant tags nested below.
+     * finds the input and anchor (magnifying glass link) nested below. 
      * 
      * @param locator Locator returned from BySalesforce
      * @return LookupInputField

@@ -49,7 +49,7 @@ public class StaticCheckbox extends AbstractViewElement implements Checkbox {
      * @param locator  Locator returned from BySalesforce
      * @return StaticCheckbox
      */    
-    public static StaticCheckbox salesforceCheckbox(Locator locator) {
+    public static StaticCheckbox staticCheckbox(Locator locator) {
         return new StaticCheckbox(locator);
     }
 

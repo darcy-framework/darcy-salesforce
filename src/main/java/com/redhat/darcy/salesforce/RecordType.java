@@ -47,7 +47,8 @@ public class RecordType extends AbstractViewElement {
     /**
      * A ViewElement that corresponds to the Salesforce Record Type field on 
      * a Salesforce object.  Takes the locator returned from BySalesforce and 
-     * finds the relevant tags nested below.
+     * finds text name of the record type and the [Change] link nested below.
+     * The [Change] link presence depends on the user's profile permissions.
      * 
      * @param locator Locator returned from BySalesforce
      * @return RecordType
@@ -66,6 +67,10 @@ public class RecordType extends AbstractViewElement {
 
     public String getRecordType() {
         return recordType.getText();
+    }
+
+    public boolean hasChangelink() {
+        return change.isDisplayed();
     }
 
     public void change() {
