@@ -19,80 +19,84 @@
 
 package com.redhat.darcy.salesforce;
 
-import static com.redhat.darcy.ui.By.xpath;
-import static com.redhat.darcy.web.HtmlElements.htmlElement;
+import static com.redhat.darcy.salesforce.RequiredInput.requiredInput;
+import static com.redhat.darcy.ui.Elements.checkbox;
+import static com.redhat.darcy.web.By.htmlTag;
 
 import com.redhat.darcy.ui.AbstractViewElement;
+import com.redhat.darcy.ui.annotations.NotRequired;
 import com.redhat.darcy.ui.annotations.RequireAll;
 import com.redhat.darcy.ui.api.Locator;
 import com.redhat.darcy.ui.api.elements.Checkbox;
 import com.redhat.darcy.ui.api.elements.Element;
-import com.redhat.darcy.web.api.elements.HtmlElement;
+import com.redhat.darcy.ui.api.elements.Requireable;
 
 /**
- * A ViewElement which corresponds to the checkbox 'image' on 
- * a Salesforce page.  Takes the locator returned from BySalesforce 
- * and finds the image tag nested below.  Maps the image attributes 
- * to standard checkbox methods.
+ * An HTML input element for a value that corresponds to a checkbox field on 
+ * a Salesforce object.
  */
 @RequireAll
-public class StaticCheckbox extends AbstractViewElement implements Checkbox {
+public class CheckboxInputField extends AbstractViewElement implements Checkbox,
+    Requireable {
 
-    private HtmlElement backingImage = htmlElement(byInner(xpath("./div/img | ./img")));
+    private Checkbox nestedCheckbox = checkbox(byInner(htmlTag("input")));
+
+    @NotRequired
+    private RequiredInput requiredInput = requiredInput(parent);
 
     /**
-     * A ViewElement which corresponds to the checkbox 'image' on 
-     * a Salesforce page.  Takes the locator returned from BySalesforce 
-     * and finds the image tag nested below.  Maps the image attributes 
-     * to standard checkbox methods.
+     * An HTML input element for a value that corresponds to a checkbox field 
+     * on a Salesforce object.  Takes the locator returned from BySalesforce 
+     * and finds the input tag nested below.
      * 
      * @param locator  Locator returned from BySalesforce
-     * @return StaticCheckbox
-     */    
-    public static StaticCheckbox staticCheckbox(Locator locator) {
-        return new StaticCheckbox(locator);
+     * @return CheckboxInputField
+     */
+    public static CheckboxInputField checkboxInputField(Locator locator) {
+        return new CheckboxInputField(locator);
     }
 
-    public StaticCheckbox(Locator parent) {
-        super(parent);        
+    public CheckboxInputField(Locator parent) {
+        super(parent);
     }
 
-    public StaticCheckbox(Element parent) {
+    public CheckboxInputField(Element parent) {
         super(parent);
     }
 
     @Override
     public void check() {
-        if (!isChecked()) {
-            click();
-        }
+        nestedCheckbox.check();
     }
 
     @Override
     public void uncheck() {
-        if (isChecked()) {
-            click();
-        }
+        nestedCheckbox.uncheck();
     }
 
     @Override
     public boolean isChecked() {
-        return !backingImage.getAttribute("src").contains("unchecked");
+        return nestedCheckbox.isChecked();
     }
 
     @Override
     public void toggle() {
-        click();
+        nestedCheckbox.toggle();
     }
 
     @Override
     public void click() {
-        backingImage.click();
+        nestedCheckbox.click();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return nestedCheckbox.isEnabled();
+    }
+
+    @Override
+    public boolean isRequired() {
+        return requiredInput.isDisplayed();
     }
 
 }
